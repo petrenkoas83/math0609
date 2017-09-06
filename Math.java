@@ -1,6 +1,6 @@
 public class Math {
 	public static Integer subtraction(Integer a, Integer b) {
-		return a*b;
+		return a-b;
 	}
 	public static void main (String[] args) {
 		Integer a = Integer.valueOf(args[0]);
