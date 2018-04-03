@@ -5,27 +5,23 @@ repositories {
           url "http://localhost:8081/nexus/content/repositories/mfr/org/myorg/Math"
     }
 }
-dependencies {
-//    testCompile "junit:junit:3.8.1"
-//    compile "org.jbundle.util:org.jbundle.util.jbackup:2.0.0"
-//    compile "net.sf.webtestfixtures:webtestfixtures:2.0.1.3"
-}
+
 uploadArchives {
-    repositories {
-       mavenDeployer {
-             repository(url: "http://localhost:8081/nexus/content/repositories/mfr/org/myorg/Math") {
-             authentication(userName: "admin", password: "admin123")
+	repositories {
+		mavenDeployer {
+			repository(url: "http://localhost:8081/nexus/content/repositories/mfr/org/myorg/Math") {
+ 				authentication(userName: "admin", password: "admin123")
+			}
+			pom.project {
+				groupId project.getGroup()
+				artifactId project.getName()
+				version project.getVersion()
+				//можно еще добавлять проперти
+				properties {
+					propertyOne 'propertyOneValue'
+					propertyTwo 'propertyTwoValue'
+				}
+			}
+		}
 	}
-pom.project {
-    groupId project.getGroup()
-    artifactId project.getName()
-    version project.getVersion()
-    //можно еще добавлять проперти
-    properties {
-        propertyOne 'propertyOneValue'
-        propertyTwo 'propertyTwoValue'
-    }
-}
-       }
-    }
 }
