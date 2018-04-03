@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 repositories {
     maven {
-          url "http://localhost:8081/nexus/content/groups/public"
+          url "http://localhost:8081/nexus/content/repositories/mfr/org/myorg/Math"
     }
 }
 dependencies {
@@ -13,7 +13,7 @@ dependencies {
 uploadArchives {
     repositories {
        mavenDeployer {
-             repository(url: "http://localhost:8081/nexus/content/repositories/snapshots") {
+             repository(url: "http://localhost:8081/nexus/content/repositories/mfr/org/myorg/Math") {
              authentication(userName: "admin", password: "admin123")
 	}
 pom.project {
