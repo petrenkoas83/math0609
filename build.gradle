@@ -1,0 +1,41 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+	maven {
+		url "http://localhost:8081/nexus/service/local/artifact/maven/content"
+	}
+}
+
+jar {
+	baseName = 'math-gradle'
+}
+
+dependencies {
+//	testCompile "junit:junit:3.8.1"
+//	compile "org.jbundle.util:org.jbundle.util.jbackup:2.0.0"
+//	compile "net.sf.webtestfixtures:webtestfixtures:2.0.1.3"
+}
+
+uploadArchives {
+	repositories {
+		mavenDeployer {
+             		repository(url: "http://nexusurl:8081/nexus/content/repositories/snapshots") {
+             			authentication(userName: "admin", password: "admin123")
+			}
+//			pom {
+//				groupId=group
+//				artifactId=Project.getName()
+//				version=Project.getVersion()
+//				groupId='groupId'
+//				artefactId='artefactId'
+//				version='0.2.0'
+//				//можно еще добавлять проперти
+//				properties {
+//					propertyOne 'propertyOneValue'
+//					propertyTwo 'propertyTwoValue'
+//				}
+//			}
+		}
+	}
+}
